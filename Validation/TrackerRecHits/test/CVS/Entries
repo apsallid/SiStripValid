@@ -1,0 +1,14 @@
+/HistoCompare.C/1.2/Fri Feb 23 11:26:08 2007//TCMSSW_6_1_2
+/OvalFile/1.3/Fri Jan 12 12:06:38 2007//TCMSSW_6_1_2
+/SiPixelRecHitsCompare.C/1.10/Mon Jan 19 17:10:48 2009//TCMSSW_6_1_2
+/SiPixelRecHitsPlots.C/1.4/Fri Mar 30 10:21:37 2007//TCMSSW_6_1_2
+/SiPixelRecHitsValid.csh/1.3/Mon Jan 19 17:10:48 2009//TCMSSW_6_1_2
+/SiPixelRecHitsValid_cfg.py/1.2/Mon Jan 19 17:10:48 2009//TCMSSW_6_1_2
+/SiStripRecHitsCompare.C/1.14/Mon Jan 19 17:10:48 2009//TCMSSW_6_1_2
+/SiStripRecHitsPlots.C/1.6/Fri Mar 30 10:21:37 2007//TCMSSW_6_1_2
+/SiStripRecHitsValid.csh/1.2/Mon Jan 19 17:10:48 2009//TCMSSW_6_1_2
+/SiStripRecHitsValid_cfg.py/1.2/Mon Jan 19 17:10:48 2009//TCMSSW_6_1_2
+/TrackerValidationChain.csh/1.1/Fri Jan 12 12:06:38 2007//TCMSSW_6_1_2
+/copyWWWPixel.csh/1.5/Wed May  7 16:21:59 2008//TCMSSW_6_1_2
+/copyWWWStrip.csh/1.5/Wed May  7 16:21:59 2008//TCMSSW_6_1_2
+D

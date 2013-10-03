@@ -1,0 +1,24 @@
+/RecoForDQM_Cosmic_cff.py/1.4/Sat Mar 28 10:04:41 2009//TCMSSW_6_2_0_pre7
+/RecoForDQM_Sim_cff.py/1.4/Fri Dec 26 09:05:28 2008//TCMSSW_6_2_0_pre7
+/RecoForDQM_cff.py/1.11/Sat Mar 28 10:04:41 2009//TCMSSW_6_2_0_pre7
+/SiStripClientConfigP5_Cosmic_cff.py/1.2/Mon Nov  7 17:46:04 2011//TCMSSW_6_2_0_pre7
+/SiStripClientConfigP5_HeavyIons_cff.py/1.2/Sat Nov 12 09:55:39 2011//TCMSSW_6_2_0_pre7
+/SiStripClientConfigP5_cff.py/1.13/Thu Jun 23 13:14:18 2011//TCMSSW_6_2_0_pre7
+/SiStripClientConfig_Tier0_Cosmic_cff.py/1.2/Wed Feb 16 16:07:47 2011//TCMSSW_6_2_0_pre7
+/SiStripClientConfig_Tier0_HeavyIons_cff.py/1.2/Tue Nov 15 09:31:09 2011//TCMSSW_6_2_0_pre7
+/SiStripClientConfig_Tier0_cff.py/1.15/Tue Mar  6 11:08:34 2012//TCMSSW_6_2_0_pre7
+/SiStripClientConfig_cff.py/1.9/Wed Feb 17 17:47:19 2010//TCMSSW_6_2_0_pre7
+/SiStripDQMOfflineGlobalRunCAF_cff.py/1.4/Fri Oct 24 10:04:04 2008//TCMSSW_6_2_0_pre7
+/SiStripDQMOffline_cff.py/1.6/Mon Mar  1 21:23:44 2010//TCMSSW_6_2_0_pre7
+/SiStripDQMOnline_cff.py/1.7/Mon Mar  1 21:23:45 2010//TCMSSW_6_2_0_pre7
+/SiStripDQMRecoConfigOfflineGlobalRunCAF_cfi.py/1.7/Fri Dec 26 09:05:28 2008//TCMSSW_6_2_0_pre7
+/SiStripDQMSourceConfigOfflineGlobalRunCAF_cfi.py/1.8/Thu May  6 09:25:05 2010//TCMSSW_6_2_0_pre7
+/SiStripDQMTier0GlobalRun_cff.py/1.3/Tue Mar  6 11:04:32 2012//TCMSSW_6_2_0_pre7
+/SiStripDQMTier0_cff.py/1.3/Tue Mar  6 11:04:25 2012//TCMSSW_6_2_0_pre7
+/SiStripSourceConfigHVOff_cff.py/1.5/Tue Nov  1 15:57:04 2011//TCMSSW_6_2_0_pre7
+/SiStripSourceConfigP5_cff.py/1.36/Tue Sep  4 15:53:47 2012//TCMSSW_6_2_0_pre7
+/SiStripSourceConfigTier0_Cosmic_cff.py/1.31/Tue Jul 24 13:44:36 2012//TCMSSW_6_2_0_pre7
+/SiStripSourceConfigTier0_HeavyIons_cff.py/1.1/Thu Sep 23 13:53:32 2010//TCMSSW_6_2_0_pre7
+/SiStripSourceConfigTier0_cff.py/1.54/Tue Dec 18 15:36:36 2012//TCMSSW_6_2_0_pre7
+/SiStripSourceConfig_cff.py/1.15/Thu May  6 09:25:05 2010//TCMSSW_6_2_0_pre7
+D

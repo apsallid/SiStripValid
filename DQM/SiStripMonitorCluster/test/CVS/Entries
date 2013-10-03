@@ -1,0 +1,13 @@
+/MonitorCluster_RealData_cfg.py/1.16/Tue Nov  1 15:53:33 2011//TCMSSW_6_2_0_pre8
+/MonitorCluster_SimData_cfg.py/1.2/Tue Sep 22 09:27:16 2009//TCMSSW_6_2_0_pre8
+/Readme/1.5/Mon Jun 26 09:22:19 2006//TCMSSW_6_2_0_pre8
+/SiStripFedCablingCatalog.xml/1.4/Mon Aug  7 17:47:49 2006//TCMSSW_6_2_0_pre8
+/authentication.xml/1.1/Wed Mar  8 13:08:21 2006//TCMSSW_6_2_0_pre8
+/batch_mtcc.sh/1.20/Tue Aug 22 22:13:01 2006//TCMSSW_6_2_0_pre8
+/filter_mtcc.sh/1.10/Sun Aug 20 18:37:31 2006//TCMSSW_6_2_0_pre8
+/filter_mtcc_reprocessed.sh/1.1/Tue Oct 10 23:32:30 2006//TCMSSW_6_2_0_pre8
+/get_client_files.sh/1.2/Thu Jul  6 12:48:38 2006//TCMSSW_6_2_0_pre8
+/lscastor.sh/1.2/Sun Aug 20 14:00:06 2006//TCMSSW_6_2_0_pre8
+/lscmsdisk0.sh/1.2/Thu Aug 24 05:38:14 2006//TCMSSW_6_2_0_pre8
+/plot1tkmod.C/1.1/Mon Jun  5 12:50:33 2006//TCMSSW_6_2_0_pre8
+D

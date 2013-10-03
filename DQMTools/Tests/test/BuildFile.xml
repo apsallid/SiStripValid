@@ -1,0 +1,19 @@
+<use   name="DQMServices/Core"/>
+<use   name="FWCore/Framework"/>
+<use   name="FWCore/ParameterSet"/>
+<use   name="FWCore/ServiceRegistry"/>
+<use   name="FWCore/Utilities"/>
+<use   name="roothistmatrix"/>
+<library   file="*.cc" name="DQMToolsTestTestPlugins">
+  <flags   EDM_PLUGIN="1"/>
+</library>
+
+<environment>
+  <bin   file="runTheWhiteRabbit.cpp">
+    <flags   TEST_RUNNER_ARGS=" /bin/bash DQMTools/Tests/test runtests.sh"/>
+  </bin>
+</environment>
+
+<bin   file="TestTransitions.cpp" name="TestDQMToolsTransitionScripts">
+    <flags   TEST_RUNNER_ARGS=" /bin/bash DQMServices/FwkIO/test run_tests.sh"/>
+</bin>

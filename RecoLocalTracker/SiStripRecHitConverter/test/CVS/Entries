@@ -1,0 +1,17 @@
+/BuildFile.xml/1.1/Tue Feb 16 20:37:09 2010//TCMSSW_6_1_2
+/ClusterFilter.cc/1.3/Fri Mar 30 14:21:05 2007//TCMSSW_6_1_2
+/ClusterFilter.h/1.1/Mon Mar 26 11:09:07 2007//TCMSSW_6_1_2
+/DigisToRecHitRead_cfg.py/1.3/Tue Feb 16 17:08:34 2010//TCMSSW_6_1_2
+/ReadRecHit.cc/1.9/Thu Mar  8 13:58:28 2007//TCMSSW_6_1_2
+/ReadRecHit.h/1.6/Fri May 20 17:17:30 2011//TCMSSW_6_1_2
+/ReadRecHitAlgorithm.cc/1.20/Tue Jan 17 13:07:18 2012//TCMSSW_6_1_2
+/ReadRecHitAlgorithm.h/1.5/Fri Jul 21 16:32:13 2006//TCMSSW_6_1_2
+/Res_comparison.C/1.1/Fri Jul 11 13:40:31 2008//TCMSSW_6_1_2
+/Resolution_matched_new.C/1.1/Fri Jul 11 13:40:31 2008//TCMSSW_6_1_2
+/Resolution_matchedy_new.C/1.1/Fri Jul 11 13:40:31 2008//TCMSSW_6_1_2
+/Resolution_new.C/1.1/Fri Jul 11 13:40:31 2008//TCMSSW_6_1_2
+/Resolutionwc.C/1.1/Fri Jul 11 13:40:31 2008//TCMSSW_6_1_2
+/pull.C/1.1/Fri Jul 11 13:40:31 2008//TCMSSW_6_1_2
+/pull1.C/1.1/Fri Jul 11 13:40:31 2008//TCMSSW_6_1_2
+/pullf.C/1.1/Fri Jul 11 13:40:31 2008//TCMSSW_6_1_2
+D

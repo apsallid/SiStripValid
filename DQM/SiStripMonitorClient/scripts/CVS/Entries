@@ -1,0 +1,20 @@
+/SiStripDQMCAFHarvest_template.job/1.3/Tue Nov  4 13:31:38 2008//TCMSSW_6_2_0_pre7
+/SiStripDQMOfflineCAF_template.job/1.6/Fri Oct 24 10:04:05 2008//TCMSSW_6_2_0_pre7
+/TkMap_script_automatic_DB.sh/1.15/Mon Mar  4 16:54:11 2013//TCMSSW_6_2_0_pre7
+/archiveCAFProcessing.csh/1.2/Tue Nov  4 13:31:38 2008//TCMSSW_6_2_0_pre7
+/badChannelTrendPlots.sh/1.1/Mon Mar  4 14:54:36 2013//TCMSSW_6_2_0_pre7
+/bs_bad_ls_harvester/1.2/Wed Apr 25 10:28:14 2012//TCMSSW_6_2_0_pre7
+/checkCAFFiles.csh/1.2/Fri Nov 28 11:23:49 2008//TCMSSW_6_2_0_pre7
+/getGTfromDQMFile.py/1.2/Mon Mar  4 16:54:11 2013//TCMSSW_6_2_0_pre7
+/getGTscript.sh/1.1/Tue Oct 30 21:38:05 2012//TCMSSW_6_2_0_pre7
+/getRunInfo.py/1.7/Thu Nov 27 17:36:56 2008//TCMSSW_6_2_0_pre7
+/initialize/1.11/Thu Apr 29 10:49:22 2010//TCMSSW_6_2_0_pre7
+/initializeForGREN/1.6/Mon Dec 17 22:53:29 2007//TCMSSW_6_2_0_pre7
+/initializeForGreenBarrack/1.2/Wed Oct  7 12:39:11 2009//TCMSSW_6_2_0_pre7
+/initializeWithoutCollector/1.14/Fri Mar 21 12:35:04 2008//TCMSSW_6_2_0_pre7
+/resubmitCAFJobs.csh/1.1/Wed Oct 29 20:46:59 2008//TCMSSW_6_2_0_pre7
+/startCAFHarvesting.csh/1.2/Fri Nov  7 10:44:42 2008//TCMSSW_6_2_0_pre7
+/startDQM/1.1/Fri Nov 23 12:32:01 2007//TCMSSW_6_2_0_pre7
+/submitDQMOfflineCAF.py/1.25/Fri Jan 23 16:17:19 2009//TCMSSW_6_2_0_pre7
+/updateCAFStatus.csh/1.2/Fri Nov 28 11:23:49 2008//TCMSSW_6_2_0_pre7
+D
