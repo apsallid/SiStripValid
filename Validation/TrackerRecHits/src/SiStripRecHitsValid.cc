@@ -66,12 +66,6 @@ SiStripRecHitsValid::SiStripRecHitsValid(const ParameterSet& ps) :
 
   topFolderName_ = conf_.getParameter<std::string>("TopFolderName");
 
-  // initialize GenericTriggerEventFlag by specific configuration
-  // in this way, one can set specific selections for different MEs
-  genTriggerEventFlagBPTXfilter_     = new GenericTriggerEventFlag(conf_.getParameter<edm::ParameterSet>("BPTXfilter")     );
-  genTriggerEventFlagPixelDCSfilter_ = new GenericTriggerEventFlag(conf_.getParameter<edm::ParameterSet>("PixelDCSfilter") );
-  genTriggerEventFlagStripDCSfilter_ = new GenericTriggerEventFlag(conf_.getParameter<edm::ParameterSet>("StripDCSfilter") );
-
   edm::ParameterSet ParametersNumTotRphi =  conf_.getParameter<edm::ParameterSet>("TH1NumTotRphi");
   layerswitchNumTotRphi = ParametersNumTotRphi.getParameter<bool>("layerswitchon");
 
@@ -163,21 +157,10 @@ SiStripRecHitsValid::SiStripRecHitsValid(const ParameterSet& ps) :
 
 SiStripRecHitsValid::~SiStripRecHitsValid(){
   // if ( outputFile_.size() != 0 && dbe_ ) dbe_->save(outputFile_);
-  if (genTriggerEventFlagBPTXfilter_    ) delete genTriggerEventFlagBPTXfilter_;
-  if (genTriggerEventFlagPixelDCSfilter_) delete genTriggerEventFlagPixelDCSfilter_;
-  if (genTriggerEventFlagStripDCSfilter_) delete genTriggerEventFlagStripDCSfilter_;
 }
 
 //--------------------------------------------------------------------------------------------
 void SiStripRecHitsValid::beginRun(const edm::Run& run, const edm::EventSetup& es){
-
-  // Initialize the GenericTriggerEventFlag
-  if ( genTriggerEventFlagBPTXfilter_->on() )
-    genTriggerEventFlagBPTXfilter_->initRun( run, es );
-  if ( genTriggerEventFlagPixelDCSfilter_->on() )
-    genTriggerEventFlagPixelDCSfilter_->initRun( run, es );
-  if ( genTriggerEventFlagStripDCSfilter_->on() )
-    genTriggerEventFlagStripDCSfilter_->initRun( run, es );
 
   unsigned long long cacheID = es.get<SiStripDetCablingRcd>().cacheIdentifier();
   if (m_cacheID_ != cacheID) {
@@ -832,15 +815,18 @@ void SiStripRecHitsValid::createTotalMEs()
 
   //NumTotRphi
   if(layerswitchNumTotRphi) {
-    totalMEs.meNumTotRphi = bookME1D("TH1NumTotRphi", "TH1NumTotRphi" ,"Num of RecHits rphi");
+    totalMEs.meNumTotRphi = bookME1D("TH1NumTotRphi", "TH1NumTotRphi" ,"Num of RecHits");
+    totalMEs.meNumTotRphi->setAxisTitle("Total number of RecHits");
   }
   //NumTotSas
   if(layerswitchNumTotSas) {
     totalMEs.meNumTotSas = bookME1D("TH1NumTotSas", "TH1NumTotSas","Num of RecHits sas");
+    totalMEs.meNumTotSas ->setAxisTitle("Total number of RecHits in stereo modules");
   }
   //NumTotMatched
   if(layerswitchNumTotMatched) {
     totalMEs.meNumTotMatched = bookME1D("TH1NumTotMatched","TH1NumTotMatched","Num of RecHits rmatched"); 
+    totalMEs.meNumTotMatched->setAxisTitle("Total number of matched RecHits");
   }
        
 }
@@ -861,35 +847,43 @@ void SiStripRecHitsValid::createLayerMEs(std::string label)
 
   //NstpRphi
   if(layerswitchNstpRphi) {
-    layerMEs.meNstpRphi = bookME1D("TH1NstpRphi", hidmanager.createHistoLayer("Nstp_rphi","layer",label,"").c_str() ,"RecHit Cluster Size");  
+    layerMEs.meNstpRphi = bookME1D("TH1NstpRphi", hidmanager.createHistoLayer("Nstp_rphi","layer",label,"").c_str() ,"Cluster Width - Number of strips that belong to the RecHit cluster"); 
+    layerMEs.meNstpRphi->setAxisTitle(("Cluster Width [nr strips] in "+ label).c_str());
   }
   //AdcRphi
   if(layerswitchAdcRphi) {
-    layerMEs.meAdcRphi = bookME1D("TH1AdcRphi", hidmanager.createHistoLayer("Adc_rphi","layer",label,"").c_str() ,"RecHit Cluster Charge");  
+    layerMEs.meAdcRphi = bookME1D("TH1AdcRphi", hidmanager.createHistoLayer("Adc_rphi","layer",label,"").c_str() ,"RecHit Cluster Charge");
+    layerMEs.meAdcRphi->setAxisTitle(("cluster charge [ADC] in " + label).c_str());
   }
   //PosxRphi
   if(layerswitchPosxRphi) {
-    layerMEs.mePosxRphi = bookME1D("TH1PosxRphi", hidmanager.createHistoLayer("Posx_rphi","layer",label,"").c_str() ,"RecHit x coord.");  
+    layerMEs.mePosxRphi = bookME1D("TH1PosxRphi", hidmanager.createHistoLayer("Posx_rphi","layer",label,"").c_str() ,"RecHit x coord."); 
+    layerMEs.mePosxRphi->setAxisTitle(("x RecHit coord. (local frame) in " + label).c_str());
   }
   //ErrxRphi
   if(layerswitchErrxRphi) {
     layerMEs.meErrxRphi = bookME1D("TH1ErrxRphi", hidmanager.createHistoLayer("Errx_rphi","layer",label,"").c_str() ,"RecHit err(x) coord.");   //<error>~20micron  
+    layerMEs.meErrxRphi->setAxisTitle(("err(x) RecHit coord. (local frame) in " + label).c_str());
   }
   //ResRphi
   if(layerswitchResRphi) {
-    layerMEs.meResRphi = bookME1D("TH1ResRphi", hidmanager.createHistoLayer("Res_rphi","layer",label,"").c_str() ,"RecHit Residual");  
+    layerMEs.meResRphi = bookME1D("TH1ResRphi", hidmanager.createHistoLayer("Res_rphi","layer",label,"").c_str() ,"RecHit Resolution of x coordinate"); 
+    layerMEs.meResRphi->setAxisTitle(("RecHit Res(x) in " + label).c_str());
   }
   //PullLFRphi
   if(layerswitchPullLFRphi) {
-    layerMEs.mePullLFRphi = bookME1D("TH1PullLFRphi", hidmanager.createHistoLayer("Pull_LF_rphi","layer",label,"").c_str() ,"Pull");  
+    layerMEs.mePullLFRphi = bookME1D("TH1PullLFRphi", hidmanager.createHistoLayer("Pull_LF_rphi","layer",label,"").c_str() ,"Pull distribution");  
+    layerMEs.mePullLFRphi->setAxisTitle(("Pull distribution (local frame) in " + label).c_str());
   }
   //PullMFRphi
   if(layerswitchPullMFRphi) {
-    layerMEs.mePullMFRphi = bookME1D("TH1PullMFRphi", hidmanager.createHistoLayer("Pull_MF_rphi","layer",label,"").c_str() ,"Pull");  
+    layerMEs.mePullMFRphi = bookME1D("TH1PullMFRphi", hidmanager.createHistoLayer("Pull_MF_rphi","layer",label,"").c_str() ,"Pull distribution");  
+    layerMEs.mePullMFRphi->setAxisTitle(("Pull distribution (measurement frame) in " + label).c_str());
   }
   //Chi2Rphi
   if(layerswitchChi2Rphi) {
-    layerMEs.meChi2Rphi = bookME1D("TH1Chi2Rphi", hidmanager.createHistoLayer("Chi2_rphi","layer",label,"").c_str() ,"RecHit Chi2 test");  
+    layerMEs.meChi2Rphi = bookME1D("TH1Chi2Rphi", hidmanager.createHistoLayer("Chi2_rphi","layer",label,"").c_str() ,"RecHit Chi2 test"); 
+    layerMEs.meChi2Rphi->setAxisTitle(("RecHit Chi2 test in " + label).c_str()); 
   }
 
   LayerMEsMap[label]=layerMEs;
@@ -919,63 +913,78 @@ void SiStripRecHitsValid::createStereoAndMatchedMEs(std::string label)
 
   //NstpSas
   if(layerswitchNstpSas) {
-    stereoandmatchedMEs.meNstpSas = bookME1D("TH1NstpSas", hidmanager.createHistoLayer("Nstp_sas","layer",label,"").c_str() ,"RecHit Cluster Size");  
+    stereoandmatchedMEs.meNstpSas = bookME1D("TH1NstpSas", hidmanager.createHistoLayer("Nstp_sas","layer",label,"").c_str() ,"Cluster Width - Number of strips that belong to the RecHit cluster");  
+    stereoandmatchedMEs.meNstpSas->setAxisTitle(("Cluster Width [nr strips] in stereo modules in "+ label).c_str());
   }
   //AdcSas
   if(layerswitchAdcSas) {
-    stereoandmatchedMEs.meAdcSas = bookME1D("TH1AdcSas", hidmanager.createHistoLayer("Adc_sas","layer",label,"").c_str() ,"RecHit Cluster Charge");  
+    stereoandmatchedMEs.meAdcSas = bookME1D("TH1AdcSas", hidmanager.createHistoLayer("Adc_sas","layer",label,"").c_str() ,"RecHit Cluster Charge"); 
+    stereoandmatchedMEs.meAdcSas->setAxisTitle(("cluster charge [ADC] in stereo modules in " + label).c_str());
   }
   //PosxSas
   if(layerswitchPosxSas) {
-    stereoandmatchedMEs.mePosxSas = bookME1D("TH1PosxSas", hidmanager.createHistoLayer("Posx_sas","layer",label,"").c_str() ,"RecHit x coord.");  
+    stereoandmatchedMEs.mePosxSas = bookME1D("TH1PosxSas", hidmanager.createHistoLayer("Posx_sas","layer",label,"").c_str() ,"RecHit x coord."); 
+    stereoandmatchedMEs.mePosxSas->setAxisTitle(("x RecHit coord. (local frame) in stereo modules in " + label).c_str());
   }
   //ErrxSas
   if(layerswitchErrxSas) {
     stereoandmatchedMEs.meErrxSas = bookME1D("TH1ErrxSas", hidmanager.createHistoLayer("Errx_sas","layer",label,"").c_str() ,"RecHit err(x) coord.");  
+    stereoandmatchedMEs.meErrxSas->setAxisTitle(("err(x) RecHit coord. (local frame) in stereo modules in " + label).c_str());
   }
   //ResSas
   if(layerswitchResSas) {
-    stereoandmatchedMEs.meResSas = bookME1D("TH1ResSas", hidmanager.createHistoLayer("Res_sas","layer",label,"").c_str() ,"RecHit Residual");  
+    stereoandmatchedMEs.meResSas = bookME1D("TH1ResSas", hidmanager.createHistoLayer("Res_sas","layer",label,"").c_str() ,"RecHit Resolution of x coordinate"); 
+    stereoandmatchedMEs.meResSas->setAxisTitle(("RecHit Res(x) in stereo modules in " + label).c_str());
   }
   //PullLFSas
   if(layerswitchPullLFSas) {
-    stereoandmatchedMEs.mePullLFSas = bookME1D("TH1PullLFSas", hidmanager.createHistoLayer("Pull_LF_sas","layer",label,"").c_str() ,"Pull");  
+    stereoandmatchedMEs.mePullLFSas = bookME1D("TH1PullLFSas", hidmanager.createHistoLayer("Pull_LF_sas","layer",label,"").c_str() ,"Pull distribution");  
+    stereoandmatchedMEs.mePullLFSas->setAxisTitle(("Pull distribution (local frame) in stereo modules in " + label).c_str());
   }
   //PullMFSas
   if(layerswitchPullMFSas) {
-    stereoandmatchedMEs.mePullMFSas = bookME1D("TH1PullMFSas", hidmanager.createHistoLayer("Pull_MF_sas","layer",label,"").c_str() ,"Pull");  
+    stereoandmatchedMEs.mePullMFSas = bookME1D("TH1PullMFSas", hidmanager.createHistoLayer("Pull_MF_sas","layer",label,"").c_str() ,"Pull distribution");  
+    stereoandmatchedMEs.mePullMFSas->setAxisTitle(("Pull distribution (measurement frame) in stereo modules in " + label).c_str());
   }
   //Chi2Sas
   if(layerswitchChi2Sas) {
     stereoandmatchedMEs.meChi2Sas = bookME1D("TH1Chi2Sas", hidmanager.createHistoLayer("Chi2_sas","layer",label,"").c_str() ,"RecHit Chi2 test");  
+    stereoandmatchedMEs.meChi2Sas->setAxisTitle(("RecHit Chi2 test in stereo modules in " + label).c_str()); 
   }
   //PosxMatched
   if(layerswitchPosxMatched) {
     stereoandmatchedMEs.mePosxMatched = bookME1D("TH1PosxMatched", hidmanager.createHistoLayer("Posx_matched","layer",label,"").c_str() ,"RecHit x coord.");  
+    stereoandmatchedMEs.mePosxMatched->setAxisTitle(("x coord. matched RecHit (local frame) in " + label).c_str());
   }
   //PosyMatched
   if(layerswitchPosyMatched) {
-    stereoandmatchedMEs.mePosyMatched = bookME1D("TH1PosyMatched", hidmanager.createHistoLayer("Posy_matched","layer",label,"").c_str() ,"RecHit y coord.");  
+    stereoandmatchedMEs.mePosyMatched = bookME1D("TH1PosyMatched", hidmanager.createHistoLayer("Posy_matched","layer",label,"").c_str() ,"RecHit y coord."); 
+    stereoandmatchedMEs.mePosyMatched->setAxisTitle(("y coord. matched RecHit (local frame) in " + label).c_str());
   }
   //ErrxMatched
   if(layerswitchErrxMatched) {
     stereoandmatchedMEs.meErrxMatched = bookME1D("TH1ErrxMatched", hidmanager.createHistoLayer("Errx_matched","layer",label,"").c_str() ,"RecHit err(x) coord.");  
+    stereoandmatchedMEs.meErrxMatched->setAxisTitle(("err(x) coord. matched RecHit (local frame) in " + label).c_str());
   }
   //ErryMatched
   if(layerswitchErryMatched) {
-    stereoandmatchedMEs.meErryMatched = bookME1D("TH1ErryMatched", hidmanager.createHistoLayer("Erry_matched","layer",label,"").c_str() ,"RecHit err(y) coord.");  
+    stereoandmatchedMEs.meErryMatched = bookME1D("TH1ErryMatched", hidmanager.createHistoLayer("Erry_matched","layer",label,"").c_str() ,"RecHit err(y) coord."); 
+    stereoandmatchedMEs.meErryMatched->setAxisTitle(("err(y) coord. matched RecHit (local frame) in " + label).c_str());
   }
   //ResxMatched
   if(layerswitchResxMatched) {
-    stereoandmatchedMEs.meResxMatched = bookME1D("TH1ResxMatched", hidmanager.createHistoLayer("Resx_matched","layer",label,"").c_str() ,"RecHit Res(x) coord.");  
+    stereoandmatchedMEs.meResxMatched = bookME1D("TH1ResxMatched", hidmanager.createHistoLayer("Resx_matched","layer",label,"").c_str() ,"RecHit Resolution of x coord."); 
+    stereoandmatchedMEs.meResxMatched->setAxisTitle(("Res(x) in matched RecHit in " + label).c_str());
   }
   //ResyMatched
   if(layerswitchResyMatched) {
-    stereoandmatchedMEs.meResyMatched = bookME1D("TH1ResyMatched", hidmanager.createHistoLayer("Resy_matched","layer",label,"").c_str() ,"RecHit Res(y) coord.");  
+    stereoandmatchedMEs.meResyMatched = bookME1D("TH1ResyMatched", hidmanager.createHistoLayer("Resy_matched","layer",label,"").c_str() ,"RecHit Res(y) coord."); 
+    stereoandmatchedMEs.meResyMatched->setAxisTitle(("Res(y) in matched RecHit in " + label).c_str());
   }
   //Chi2Matched
   if(layerswitchChi2Matched) {
-    stereoandmatchedMEs.meChi2Matched = bookME1D("TH1Chi2Matched", hidmanager.createHistoLayer("Chi2_matched","layer",label,"").c_str() ,"RecHit Chi2 test");  
+    stereoandmatchedMEs.meChi2Matched = bookME1D("TH1Chi2Matched", hidmanager.createHistoLayer("Chi2_matched","layer",label,"").c_str() ,"RecHit Chi2 test"); 
+    stereoandmatchedMEs.meChi2Matched->setAxisTitle(("Matched RecHit Chi2 test in " + label).c_str()); 
   }
 
   StereoAndMatchedMEsMap[label]=stereoandmatchedMEs;
@@ -993,17 +1002,20 @@ void SiStripRecHitsValid::createSubDetMEs(std::string label) {
   //NumRphi
   if (layerswitchNumRphi){
     HistoName = "TH1NumRphi__" + label;
-    subdetMEs.meNumRphi = bookME1D("TH1NumRphi",HistoName.c_str(),"Num of RecHits rphi");
+    subdetMEs.meNumRphi = bookME1D("TH1NumRphi",HistoName.c_str(),"Num of RecHits");
+    subdetMEs.meNumRphi->setAxisTitle(("Total number of RecHits in "+ label).c_str());
   }  
   //NumSas
   if (layerswitchNumSas){
     HistoName = "TH1NumSas__" + label;
-    subdetMEs.meNumSas = bookME1D("TH1NumSas",HistoName.c_str(),"Num of RecHits sas");
+    subdetMEs.meNumSas = bookME1D("TH1NumSas",HistoName.c_str(),"Num of RecHits in stereo modules");
+    subdetMEs.meNumSas->setAxisTitle(("Total number of RecHits in stereo modules in "+ label).c_str());
   }  
   //NumMatched
   if (layerswitchNumMatched){
     HistoName = "TH1NumMatched__" + label;
-    subdetMEs.meNumMatched = bookME1D("TH1NumMatched",HistoName.c_str(),"Num of RecHits matched");
+    subdetMEs.meNumMatched = bookME1D("TH1NumMatched",HistoName.c_str(),"Num of matched RecHits" );
+    subdetMEs.meNumMatched->setAxisTitle(("Total number of matched RecHits in "+ label).c_str());
   }  
 
   SubDetMEsMap[label]=subdetMEs;

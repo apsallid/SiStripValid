@@ -181,11 +181,6 @@ class SiStripRecHitsValid : public edm::EDAnalyzer {
   edm::ParameterSet Parameters;
   //const StripTopology* topol;
 
-  // add for selecting on ZeroBias events in the MinimumBias PD
-  GenericTriggerEventFlag* genTriggerEventFlagBPTXfilter_;
-  GenericTriggerEventFlag* genTriggerEventFlagPixelDCSfilter_;
-  GenericTriggerEventFlag* genTriggerEventFlagStripDCSfilter_;
-
   static const int MAXHIT = 1000;
   float rechitrphix[MAXHIT];
   float rechitrphierrx[MAXHIT];

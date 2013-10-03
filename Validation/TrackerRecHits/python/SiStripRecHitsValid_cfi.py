@@ -7,10 +7,6 @@ stripRecHitsValid = cms.EDAnalyzer("SiStripRecHitsValid",
     TopFolderName = cms.string('SiStrip/TrackerRecHits/'),
 #    TopFolderName = cms.string('TrackerRecHitsV/TrackerRecHits/Strip/'),
 
-    BPTXfilter     = cms.PSet(),
-    PixelDCSfilter = cms.PSet(),
-    StripDCSfilter = cms.PSet(),
-
     TH1NumTotRphi = cms.PSet(
         Nbinx          = cms.int32(100),
         xmin           = cms.double(0.),
@@ -58,51 +54,51 @@ stripRecHitsValid = cms.EDAnalyzer("SiStripRecHitsValid",
     ),
 
     TH1NstpRphi = cms.PSet(
-        Nbinx          = cms.int32(10),
-        xmin           = cms.double(0.5),
-        xmax           = cms.double(10.5),
+        Nbinx          = cms.int32(20),
+        xmin           = cms.double(-0.5),
+        xmax           = cms.double(19.5),
         layerswitchon  = cms.bool(True)
     ),
 
     TH1AdcRphi = cms.PSet(
         Nbinx          = cms.int32(100),
         xmin           = cms.double(0.),
-        xmax           = cms.double(300.),
+        xmax           = cms.double(500.),#300.
         layerswitchon  = cms.bool(True)
     ),
 
     TH1PosxRphi = cms.PSet(
         Nbinx          = cms.int32(100),
-        xmin           = cms.double(-6.0),
-        xmax           = cms.double(+6.0),
+        xmin           = cms.double(-6.0),#-6.0
+        xmax           = cms.double(+6.0),#+6.0
         layerswitchon  = cms.bool(True)
     ),
 
     TH1ErrxRphi = cms.PSet( #<error>~20micron 
         Nbinx          = cms.int32(100),
         xmin           = cms.double(0.),
-        xmax           = cms.double(0.01),
+        xmax           = cms.double(0.10),#0.01
         layerswitchon  = cms.bool(True)
     ),
 
     TH1ResRphi = cms.PSet( 
         Nbinx          = cms.int32(100),
-        xmin           = cms.double(-0.02),
-        xmax           = cms.double(+0.02),
+        xmin           = cms.double(-0.10),#-0.02
+        xmax           = cms.double(+0.10),#+0.02
         layerswitchon  = cms.bool(True)
     ),
 
     TH1PullLFRphi = cms.PSet( 
         Nbinx          = cms.int32(100),
-        xmin           = cms.double(-5.),
-        xmax           = cms.double(+5.),
+        xmin           = cms.double(-10.),#-5.0
+        xmax           = cms.double(+10.),#+5.0
         layerswitchon  = cms.bool(True)
     ),
 
     TH1PullMFRphi = cms.PSet( 
         Nbinx          = cms.int32(100),
-        xmin           = cms.double(-5.),
-        xmax           = cms.double(+5.),
+        xmin           = cms.double(-10.),#-5.0
+        xmax           = cms.double(+10.),#+5.0
         layerswitchon  = cms.bool(True)
     ),
 
@@ -114,16 +110,16 @@ stripRecHitsValid = cms.EDAnalyzer("SiStripRecHitsValid",
     ),
 
     TH1NstpSas = cms.PSet( 
-        Nbinx          = cms.int32(10),
-        xmin           = cms.double(0.5),
-        xmax           = cms.double(10.5),
+        Nbinx          = cms.int32(20),
+        xmin           = cms.double(-0.5),
+        xmax           = cms.double(19.5),
         layerswitchon  = cms.bool(True)
     ),
 
     TH1AdcSas = cms.PSet( 
         Nbinx          = cms.int32(100),
         xmin           = cms.double(0.),
-        xmax           = cms.double(300.),
+        xmax           = cms.double(500.),#300
         layerswitchon  = cms.bool(True)
     ),
 
@@ -137,14 +133,14 @@ stripRecHitsValid = cms.EDAnalyzer("SiStripRecHitsValid",
    TH1ErrxSas = cms.PSet( 
         Nbinx          = cms.int32(100),
         xmin           = cms.double(0.),
-        xmax           = cms.double(0.01),
+        xmax           = cms.double(0.1),#0.01
         layerswitchon  = cms.bool(True)
     ),
 
    TH1ResSas = cms.PSet( 
         Nbinx          = cms.int32(100),
-        xmin           = cms.double(-0.02),
-        xmax           = cms.double(+0.02),
+        xmin           = cms.double(-0.10),#-0.02
+        xmax           = cms.double(+0.10),#+0.02
         layerswitchon  = cms.bool(True)
     ),
 
@@ -157,58 +153,58 @@ stripRecHitsValid = cms.EDAnalyzer("SiStripRecHitsValid",
 
    TH1PullMFSas = cms.PSet( 
         Nbinx          = cms.int32(100),
-        xmin           = cms.double(-4.),
-        xmax           = cms.double(+4.),
+        xmin           = cms.double(-10.),#-4.0
+        xmax           = cms.double(+10.),#+4.0
         layerswitchon  = cms.bool(True)
     ),
 
    TH1Chi2Sas = cms.PSet( 
         Nbinx          = cms.int32(100),
         xmin           = cms.double(0.),
-        xmax           = cms.double(50.),
+        xmax           = cms.double(100.),#50
         layerswitchon  = cms.bool(True)
     ),
 
    TH1PosxMatched = cms.PSet( 
         Nbinx          = cms.int32(100),
-        xmin           = cms.double(-6.0),
-        xmax           = cms.double(+6.0),
+        xmin           = cms.double(-10.0),#-6.0
+        xmax           = cms.double(+10.0),#+6.0
         layerswitchon  = cms.bool(True)
     ),
 
    TH1PosyMatched = cms.PSet( 
         Nbinx          = cms.int32(100),
-        xmin           = cms.double(-6.0),
-        xmax           = cms.double(+6.0),
+        xmin           = cms.double(-10.0),#-6.0
+        xmax           = cms.double(+10.0),#+6.0
         layerswitchon  = cms.bool(True)
     ),
 
    TH1ErrxMatched = cms.PSet( 
         Nbinx          = cms.int32(100),
         xmin           = cms.double(0.),
-        xmax           = cms.double(0.01),
+        xmax           = cms.double(0.1),#0.01
         layerswitchon  = cms.bool(True)
     ),
 
    TH1ErryMatched = cms.PSet( 
         Nbinx          = cms.int32(100),
         xmin           = cms.double(0.),
-        xmax           = cms.double(0.05),
+        xmax           = cms.double(0.25),#0.05
         layerswitchon  = cms.bool(True)
     ),
 
    TH1ResxMatched = cms.PSet( 
         Nbinx          = cms.int32(100),
-        xmin           = cms.double(-0.02),
-        xmax           = cms.double(+0.02),
+        xmin           = cms.double(-0.1),#-0.02
+        xmax           = cms.double(+0.1),#+0.02
         layerswitchon  = cms.bool(True)
     ),
 
    TH1ResyMatched = cms.PSet( 
         Nbinx          = cms.int32(100),
-        xmin           = cms.double(-1.),
-        xmax           = cms.double(+1.),
-        layerswitchon  = cms.bool(True)
+        xmin           = cms.double(-10.), #-1
+        xmax           = cms.double(+10. ), #+1
+        layerswitchon  = cms.bool(True) 
     ),
 
    TH1Chi2Matched = cms.PSet( 
