@@ -867,7 +867,7 @@ void SiStripRecHitsValid::createLayerMEs(std::string label)
   }
   //ResRphi
   if(layerswitchResRphi) {
-    layerMEs.meResRphi = bookME1D("TH1ResRphi", hidmanager.createHistoLayer("Res_rphi","layer",label,"").c_str() ,"RecHit Resolution of x coordinate"); 
+    layerMEs.meResRphi = bookME1D("TH1ResRphi", hidmanager.createHistoLayer("Res_rphi","layer",label,"").c_str() ,"Residuals of the hit x coordinate"); 
     layerMEs.meResRphi->setAxisTitle(("RecHit Res(x) in " + label).c_str());
   }
   //PullLFRphi
@@ -933,7 +933,7 @@ void SiStripRecHitsValid::createStereoAndMatchedMEs(std::string label)
   }
   //ResSas
   if(layerswitchResSas) {
-    stereoandmatchedMEs.meResSas = bookME1D("TH1ResSas", hidmanager.createHistoLayer("Res_sas","layer",label,"").c_str() ,"RecHit Resolution of x coordinate"); 
+    stereoandmatchedMEs.meResSas = bookME1D("TH1ResSas", hidmanager.createHistoLayer("Res_sas","layer",label,"").c_str() ,"Residuals of the hit x coordinate"); 
     stereoandmatchedMEs.meResSas->setAxisTitle(("RecHit Res(x) in stereo modules in " + label).c_str());
   }
   //PullLFSas
@@ -973,12 +973,12 @@ void SiStripRecHitsValid::createStereoAndMatchedMEs(std::string label)
   }
   //ResxMatched
   if(layerswitchResxMatched) {
-    stereoandmatchedMEs.meResxMatched = bookME1D("TH1ResxMatched", hidmanager.createHistoLayer("Resx_matched","layer",label,"").c_str() ,"RecHit Resolution of x coord."); 
+    stereoandmatchedMEs.meResxMatched = bookME1D("TH1ResxMatched", hidmanager.createHistoLayer("Resx_matched","layer",label,"").c_str() ,"Residuals of the hit x coord."); 
     stereoandmatchedMEs.meResxMatched->setAxisTitle(("Res(x) in matched RecHit in " + label).c_str());
   }
   //ResyMatched
   if(layerswitchResyMatched) {
-    stereoandmatchedMEs.meResyMatched = bookME1D("TH1ResyMatched", hidmanager.createHistoLayer("Resy_matched","layer",label,"").c_str() ,"RecHit Res(y) coord."); 
+    stereoandmatchedMEs.meResyMatched = bookME1D("TH1ResyMatched", hidmanager.createHistoLayer("Resy_matched","layer",label,"").c_str() ,"Residuals of the hit y coord."); 
     stereoandmatchedMEs.meResyMatched->setAxisTitle(("Res(y) in matched RecHit in " + label).c_str());
   }
   //Chi2Matched
